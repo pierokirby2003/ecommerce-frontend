@@ -30,7 +30,8 @@ function ShoppingCart({ cart, updateCartItem, removeCartItem }) {
         body: JSON.stringify(payload)
       });
       const data = await response.json();
-      setMessage(`Seguro: ${data.message} - Orden ID: ${data.order_id} - Total: ${data.total_price}`);
+      setMessage(`Seguro: ${data.error} `);
+      console.log(data)
     } catch (error) {
       console.error('Error enviando la orden segura:', error);
       setMessage('Error al enviar la orden segura');

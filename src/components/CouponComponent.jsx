@@ -13,6 +13,7 @@ function CouponComponent() {
         body: JSON.stringify({ coupon })
       });
       const data = await response.json();
+      console.log(data)
       setMessage(`Inseguro: ${data.message}`);
     } catch (error) {
       console.error('Error aplicando cupón inseguro:', error);
@@ -28,7 +29,8 @@ function CouponComponent() {
         body: JSON.stringify({ coupon })
       });
       const data = await response.json();
-      setMessage(`Seguro: ${data.message}`);
+      console.log(data)
+      setMessage(`Seguro: ${data.error}`);
     } catch (error) {
       console.error('Error aplicando cupón seguro:', error);
       setMessage('Error al aplicar cupón seguro');

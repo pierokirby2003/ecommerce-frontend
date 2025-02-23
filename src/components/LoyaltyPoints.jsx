@@ -29,7 +29,8 @@ function LoyaltyPoints() {
         body: JSON.stringify({ username, points })
       });
       const data = await response.json();
-      setMessage(`Seguro: ${data.message}`);
+      console.log(data)
+      setMessage(`Seguro: ${data.error}`);
     } catch (error) {
       console.error('Error canjeando puntos seguro:', error);
       setMessage('Error al canjear puntos seguro');
