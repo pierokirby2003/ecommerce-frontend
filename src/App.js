@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.jsx
+import React, { useState } from 'react';
+import ProductList from './components/ProductList';
+import ShoppingCart from './components/ShoppingCart';
+import CouponComponent from './components/CouponComponent';
+import ShippingBypass from './components/ShippingBypass';
+import LoyaltyPoints from './components/LoyaltyPoints';
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, { ...product, quantity: 1 }]);
+  };
+
+  const updateCartItem = (index, field, value) => {
+    const updatedCart = [...cart];
+    updatedCart[index][field] = value;
+    setCart(updatedCart);
+  };
+
+  const removeCartItem = (index) => {
+    setCart(cart.filter((_, i) => i !== index));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: '20px' }}>
+      <h1>Ecommerce Simple con Fake Store API y Django Backend</h1>
+      <ProductList addToCart={addToCart} />
+      <hr />
+      <ShoppingCart
+        cart={cart}
+        updateCartItem={updateCartItem}
+        removeCartItem={removeCartItem}
+      />
+      <hr />
+      <CouponComponent />
+      <hr />
+      <ShippingBypass />
+      <hr />
+      <LoyaltyPoints />
     </div>
   );
 }
