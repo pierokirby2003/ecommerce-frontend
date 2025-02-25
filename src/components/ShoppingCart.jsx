@@ -13,7 +13,9 @@ function ShoppingCart({ cart, updateCartItem, removeCartItem }) {
         body: JSON.stringify(cart)
       });
       const data = await response.json();
+      console.log(cart)
       setMessage(`Inseguro: ${data.message} - Orden ID: ${data.order_id} - Total: ${data.total_price}`);
+      console.log(data)
     } catch (error) {
       console.error('Error enviando la orden insegura:', error);
       setMessage('Error al enviar la orden insegura');
@@ -32,6 +34,7 @@ function ShoppingCart({ cart, updateCartItem, removeCartItem }) {
       const data = await response.json();
       setMessage(`Seguro: ${data.error} `);
       console.log(data)
+      
     } catch (error) {
       console.error('Error enviando la orden segura:', error);
       setMessage('Error al enviar la orden segura');

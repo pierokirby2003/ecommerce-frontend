@@ -29,7 +29,7 @@ function ShippingBypass() {
       });
       const data = await response.json();
       console.log(data)
-      setMessage(`Seguro: ${data.error}`);
+      setMessage(`Seguro: ${data.message}`);
     } catch (error) {
       console.error('Error confirmando envío seguro:', error);
       setMessage('Error al confirmar envío seguro');

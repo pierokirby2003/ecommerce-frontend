@@ -30,7 +30,7 @@ function LoyaltyPoints() {
       });
       const data = await response.json();
       console.log(data)
-      setMessage(`Seguro: ${data.error}`);
+      setMessage(`Seguro: ${data.message}`);
     } catch (error) {
       console.error('Error canjeando puntos seguro:', error);
       setMessage('Error al canjear puntos seguro');
